@@ -1,95 +1,52 @@
-@module =Home {
-  label: "My Home";
-  pageTitle: "You are now on Homepage";
+@module=Home {
+    label:"My Home";
+    pageTitle:"You are now on Homepage";
 
-  @layout =Today {
-    after: zTop;
-    label: "Sales Graph";
-    component: SalesGraphComponent;
-  }
-
-  @layout =Sport {
-    after: Today;
-    label: "Sport today!";
-    component: StringComponent;
-    bindings: {
-      value: "The Texas Tech quarterback <br/><br/><br/><br/><br/><br/><br/><br/>
-                        off a long day of measuring and team interviews and psychological testing "
+    @layout=Today {
+       after:zTop;
+       label: "Sales Graph";
+       component:SalesGraphComponent;
     }
-  }
 
-  @layout =Tech20 {
-    after: Today;
-    rank: 20;
-    label: "Tech News 20";
-    component: StringComponent;
-    bindings: {
-      value: "Again most positive trend here is the addition of sensors to <br/><br/><br/><br/><br/>
-                        <br/><br/> don’t secure their phones well or at all "
+    @layout=Sport {
+       after:Today;
+       label: "Sport today!";
+       component:StringComponent;
+       bindings:{value:"The Texas Tech quarterback <br/><br/><br/><br/><br/><br/><br/><br/>
+                        off a long day of measuring and team interviews and psychological testing " }
     }
-  }
-
-  @layout =Tech {
-    after: Today;
-    rank: 5;
-    label: "Tech News 5";
-    component: StringComponent;
-    bindings: {
-      value: "HEY trend here is the addition of sensors to <br/><br/><br/><br/><br/>
-                        <br/><br/> don’t secure their phones well or at all "
-    }
-  }
-
-  @layout = omg {
-    after: Tech;
-    component: ButtonComponent;
-    bindings: {
-      label: "OMG"
-    }
-  }
 
 
-  @layout =Tech2 {
-    after: Today;
-    rank: 2;
-    label: "Tech News 2";
-    component: StringComponent;
-    bindings: {
-      value: "Again most positive trend here is the addition of sensors to <br/><br/><br/><br/><br/>
-                        <br/><br/> don’t secure their phones well or at all "
-    }
-  }
+     @layout=Tech {
+           after:Sport;
+           label: "Tech News";
+           component:StringComponent;
+           bindings:{value:"The most positive trend here is the addition of sensors to <br/><br/><br/><br/><br/>
+                        <br/><br/> don’t secure their phones well or at all " }
+     }
 
-  @layout =Stepper {
-    after: Tech2;
-    label: "My Stepper";
-    component: StepperComponent;
-    bindings: {
-      steps: ['1','2','3']
-    }
-  }
-
-  @layout =MessageBoard {
-    after: zBottom;
-    label: "Message Board";
-    component: StringComponent;
-    portletWidth: large;
-    bindings: {
-      value: "<b>Message from PR</b><br/>
+     @layout=MessageBoard {
+        after:zBottom;
+        label: "Message Board";
+        component:StringComponent;
+        portletWidth:large
+        bindings:{value:"<b>Message from PR</b><br/>
                     The most positive trend here is the addition of sensors to even low-end Android phones that unlock the device after
-                    detecting the user’s fingerprint. <br/> Why? Too many people don’t secure their phones well or at all "
-    }
-  }
+                    detecting the user’s fingerprint. <br/> Why? Too many people don’t secure their phones well or at all " }
+     }
 
 }
 
-@module =Products {
-  pageTitle: "You are now on Products";
-  homePage: ProductContentComponent;
+
+
+@module=Products {
+    pageTitle:"You are now on Products";
+    homePage:ProductContentComponent;
 }
 
-@module =Sources {
-  label: "Sources for Module";
-  homePage: SourcesComponent;
+
+@module=Sources {
+    label:"Sources for Module";
+    homePage:SourcesComponent;
 
 }

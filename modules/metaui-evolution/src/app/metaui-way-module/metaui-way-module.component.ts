@@ -30,7 +30,7 @@ export class MetauiWayModuleComponent implements OnInit
         this.items = [];
         let uiMeta = UIMeta.getInstance();
 
-        debugger;
+
         this._moduleInfo = uiMeta.computeModuleInfo();
         if (isPresent(this._moduleInfo) && this._moduleInfo.modules.length > 0) {
             this._moduleInfo.modules.forEach((module: ItemProperties) =>
