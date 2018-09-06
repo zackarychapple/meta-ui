@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {DialogComponent, ModalService} from '@aribaui/components';
 
 
 @Component({
@@ -21,10 +22,21 @@ import {Component} from '@angular/core';
         based on components and attribute directives. We will deal with the way to implement
         it, its advantages and limitations.
     </p>
-
+    <aw-button (action)="openModal()">OMG</aw-button>
     `
 })
-export class ProductContentComponent
-{
+export class ProductContentComponent {
+    constructor(private modalService: ModalService) {
+
+    }
+
+    openModal() {
+        this.modalService
+            .open<DialogComponent>(DialogComponent, {
+                title: 'My Popup Title',
+                body: 'My Popup Body'
+            });
+    }
+
 
 }

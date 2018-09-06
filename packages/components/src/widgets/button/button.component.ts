@@ -18,9 +18,9 @@
  *
  *
  */
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, Output} from '@angular/core';
 import {Environment, isBlank, isPresent} from '@aribaui/core';
-import {BaseComponent} from '../../core/base.component';
+import {BaseComponent} from '../../core';
 
 /**
  * Button component that implements consistent styling, behavior. Button can be rendered either as
@@ -64,8 +64,7 @@ import {BaseComponent} from '../../core/base.component';
     templateUrl: 'button.component.html',
     styleUrls: ['button.component.scss']
 })
-export class ButtonComponent extends BaseComponent implements AfterViewInit
-{
+export class ButtonComponent extends BaseComponent {
 
     /**
      * Button types  [ button | submit | reset ]
@@ -123,8 +122,7 @@ export class ButtonComponent extends BaseComponent implements AfterViewInit
      */
     buttonClass: string;
 
-    constructor(protected element: ElementRef, public env: Environment)
-    {
+    constructor(protected element: ElementRef, public env: Environment) {
         super(env);
 
         // Default button class is secondary.
@@ -134,8 +132,7 @@ export class ButtonComponent extends BaseComponent implements AfterViewInit
         this.disabled = false;
     }
 
-    ngOnInit()
-    {
+    ngOnInit() {
         super.ngOnInit();
         // How to style this button.
         if (isPresent(this.style)) {
@@ -166,37 +163,10 @@ export class ButtonComponent extends BaseComponent implements AfterViewInit
         }
     }
 
-
-    /**
-     * This is little hacky hackity hack as currently primeng button directive does not work with
-     * ngcontent projection but it has a label bindings, which is not the way developers work with
-     * button. you want to
-     *
-     * <button> MY CONTENT</button instead of <button label='MyContent'></button>
-     *
-     *
-     * @Todo: Change this until the time keep a test that check that they are still using ui-button
-     *     that we are expecting and replacing
-     */
-    ngAfterViewInit(): void
-    {
-        if (isPresent(this.element)) {
-            let button = this.element.nativeElement.querySelector('button');
-            let buttonTitle = button.children[0];
-            button.children[0].textContent = this.element.nativeElement.textContent.trim()
-                .replace('ui-button', '').replace('ui-btn', '');
-
-            button.classList.remove('ui-button-text-empty');
-            button.textContent = '';
-            button.appendChild(buttonTitle);
-        }
-    }
-
     /**
      *  Action clicked. Call parent action.
      */
-    clicked($event: any)
-    {
+    clicked($event: any) {
         this.action.emit(isBlank(this.value) ? $event : this.value);
     }
 }

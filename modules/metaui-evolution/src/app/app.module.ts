@@ -21,6 +21,7 @@ import * as userRules from './user-rules';
 import {PanelModule} from 'primeng/panel';
 import {CodeHighlighterModule} from 'primeng/primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule} from "@angular/material";
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     imports: [
         AppRoutingModule,
         BrowserAnimationsModule,
+        MatButtonModule,
         AribaCoreModule.forRoot({}),
         AribaComponentsModule.forRoot(),
         CodeHighlighterModule,

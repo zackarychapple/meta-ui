@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ComponentRegistry} from '@aribaui/components';
 
 import * as dynComponents from './dymamic-components';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {Notifications} from '@aribaui/core';
 
 @Component({
@@ -10,8 +10,7 @@ import {Notifications} from '@aribaui/core';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit
-{
+export class AppComponent implements OnInit {
     states: string[] = ['html', 'component', 'metaui', 'metaui2', 'module'];
     statusName: string[] = ['basic html', 'with component', 'basic metaui', 'metaUI stack',
         'modules'];
@@ -27,25 +26,21 @@ export class AppComponent implements OnInit
 
 
     constructor(componentRegistry: ComponentRegistry, private router: Router,
-                private notifications: Notifications)
-    {
+                private notifications: Notifications) {
         componentRegistry.registerTypes(dynComponents);
         this.currRoute = this.evolutions[0];
 
-        this.notifications.subscribe('app:error', (error: any) =>
-        {
+        this.notifications.subscribe('app:error', (error: any) => {
             console.log('App Error: ', error);
         });
     }
 
 
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
 
     }
 
-    next(): void
-    {
+    next(): void {
         this.currentIndex++;
         if (this.currentIndex > this.evolutions.length - 1) {
             this.currentIndex = 0;
@@ -56,8 +51,7 @@ export class AppComponent implements OnInit
         this.router.navigate([this.currRoute]);
     }
 
-    prev(): void
-    {
+    prev(): void {
         this.currentIndex--;
         if (this.currentIndex < 0) {
             this.currentIndex = this.evolutions.length - 1;
